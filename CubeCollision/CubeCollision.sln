@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CubeCollision.Domain", "Cub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeCollision.Domain.Tests", "CubeCollision.Domain.Tests\CubeCollision.Domain.Tests.csproj", "{0E4E5244-E857-4F1C-BF38-868328B3CCC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeCollision.API", "CubeCollision.API\CubeCollision.API.csproj", "{F15F7744-05F0-420B-B64B-96D1E627611C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeCollision.Infrastructure", "CubeCollision.Infrastructure\CubeCollision.Infrastructure.csproj", "{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0E4E5244-E857-4F1C-BF38-868328B3CCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E4E5244-E857-4F1C-BF38-868328B3CCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E4E5244-E857-4F1C-BF38-868328B3CCC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15F7744-05F0-420B-B64B-96D1E627611C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15F7744-05F0-420B-B64B-96D1E627611C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15F7744-05F0-420B-B64B-96D1E627611C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15F7744-05F0-420B-B64B-96D1E627611C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

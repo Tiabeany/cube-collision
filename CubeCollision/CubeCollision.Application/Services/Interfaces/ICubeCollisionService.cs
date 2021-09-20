@@ -1,12 +1,12 @@
-﻿using System;
+﻿using CubeCollision.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CubeCollision.Application.Services.Interfaces
 {
-    interface ICubeCollisionService
+    public interface ICubeCollisionService
     {
+        void SetArena(Cube firstCube, Cube secondCube);
+        CollisionIntersection GetCubeCollisionIntersectionByIndex(int index);
+        IEnumerable<CollisionIntersection> GetAllCubeCollisionIntersections();
     }
 }
