@@ -29,6 +29,15 @@ namespace CubeCollision.Domain.Test
             var cube1 = new Cube(10, 10, 10, 100, 100, 100);
             var cube2 = new Cube(10, 10, 10, 0, 0, 0);
             var arena = new Arena(cube1, cube2);
+            var collisionIntersection = arena.GetCollisionIntersection();
+
+            Assert.IsType<CollisionIntersection>(collisionIntersection);
+            Assert.Equal(0, collisionIntersection.Depth);
+            Assert.Equal(0, collisionIntersection.Height);
+            Assert.Equal(0, collisionIntersection.Width);
+            Assert.Equal(0, collisionIntersection.XPosition);
+            Assert.Equal(0, collisionIntersection.YPosition);
+            Assert.Equal(0, collisionIntersection.ZPosition);
         }
 
         [Fact]
@@ -37,6 +46,15 @@ namespace CubeCollision.Domain.Test
             var cube1 = new Cube(10, 10, 10, 100, 100, 100);
             var cube2 = new Cube(10, 10, 10, 95, 95, 95);
             var arena = new Arena(cube1, cube2);
+            var collisionIntersection = arena.GetCollisionIntersection();
+
+            Assert.IsType<CollisionIntersection>(collisionIntersection);
+            Assert.Equal(5, collisionIntersection.Depth);
+            Assert.Equal(5, collisionIntersection.Height);
+            Assert.Equal(5, collisionIntersection.Width);
+            Assert.Equal(97.5, collisionIntersection.XPosition);
+            Assert.Equal(97.5, collisionIntersection.YPosition);
+            Assert.Equal(97.5, collisionIntersection.ZPosition);
         }
     }
 }

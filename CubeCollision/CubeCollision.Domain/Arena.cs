@@ -19,47 +19,79 @@ namespace CubeCollision.Domain
 
         public bool AreCubesCollided()
         {
-            var xDistanceBetweenCubesCenters = FirstCube.XPosition - SecondCube.XPosition;
-            var firstCubeHalfHeight = FirstCube.Height * 0.5;
-            var secondCubeHalfHeight = SecondCube.Height * 0.5;
+            var xGapBetweenCubes = GetAxisGapBetweenCubes(FirstCube.XPosition, SecondCube.XPosition,
+                FirstCube.Height, SecondCube.Height);
 
-            var xGapBetweenCubes = GetAxisGapBetweenCubes(xDistanceBetweenCubesCenters, firstCubeHalfHeight, secondCubeHalfHeight);
+            var yGapBetweenCubes = GetAxisGapBetweenCubes(FirstCube.YPosition, SecondCube.YPosition,
+                FirstCube.Width, SecondCube.Width);
 
-            var yDistanceBetweenCubesCenters = FirstCube.YPosition - SecondCube.YPosition;
-            var firstCubeHalfWidth = FirstCube.Width * 0.5;
-            var secondCubeHalfWidth = SecondCube.Width * 0.5;
-
-            var yGapBetweenCubes = GetAxisGapBetweenCubes(yDistanceBetweenCubesCenters, firstCubeHalfWidth, secondCubeHalfWidth);
-
-            var zDistanceBetweenCubesCenters = FirstCube.ZPosition - SecondCube.ZPosition;
-            var firstCubeHalfDepth = FirstCube.Depth * 0.5;
-            var secondCubeHalfDepth = SecondCube.Depth * 0.5;
-
-            var zGapBetweenCubes = GetAxisGapBetweenCubes(zDistanceBetweenCubesCenters, firstCubeHalfDepth, secondCubeHalfDepth);
+            var zGapBetweenCubes = GetAxisGapBetweenCubes(FirstCube.ZPosition, SecondCube.ZPosition,
+                FirstCube.Depth, SecondCube.Depth);
 
             return xGapBetweenCubes < 0 || yGapBetweenCubes < 0 || zGapBetweenCubes < 0;
         }
 
-        private double GetAxisGapBetweenCubes(double axisDistanceBetweenCubesCenters, double firstCubeVertixHalfSize, 
-            double secondCubeVertixHalfSize)
+        private double GetAxisGapBetweenCubes(
+            double firstCubeAxisPosition, double secondCubeAxisPosition, double firstCubeVertixSize, 
+            double secondCubeVertixSize)
         {
+            var axisDistanceBetweenCubesCenters = firstCubeAxisPosition - secondCubeAxisPosition;
+            var firstCubeVertixHalfSize = firstCubeVertixSize * 0.5;
+            var secondCubeVertixHalfSize = secondCubeVertixSize * 0.5;
             return axisDistanceBetweenCubesCenters - firstCubeVertixHalfSize - secondCubeVertixHalfSize;
         }
 
         public CollisionIntersection GetCollisionIntersection()
         {
-            
+            if (AreCubesCollided())
+            {
+                var collisionHeight = Math.Abs(GetAxisGapBetweenCubes(FirstCube.XPosition, SecondCube.XPosition,
+                FirstCube.Height, SecondCube.Height));
 
-            var collisionHeight = FirstCube.XPosition - SecondCube.XPosition;
-            var collisionWidth = FirstCube.YPosition - SecondCube.YPosition;
-            var collisionDepth = FirstCube.ZPosition - SecondCube.ZPosition;
+                var collisionWidth = Math.Abs(GetAxisGapBetweenCubes(FirstCube.YPosition, SecondCube.YPosition,
+                FirstCube.Width, SecondCube.Width));
 
-            var collisionXPosition = collisionHeight / 2;
-            var collisionYPosition = collisionWidth / 2;
-            var collisionZPosition = collisionDepth / 2;
+                var collisionDepth = Math.Abs(GetAxisGapBetweenCubes(FirstCube.ZPosition, SecondCube.ZPosition,
+                FirstCube.Depth, SecondCube.Depth));
 
-            return new CollisionIntersection(collisionHeight, collisionWidth, collisionDepth,
-                collisionXPosition, collisionYPosition, collisionZPosition);
+                double collisionXPosition;
+                
+                if (FirstCube.XPosition < SecondCube.XPosition)
+                {
+                    collisionXPosition = FirstCube.XPosition + (collisionHeight * 0.5);
+                }
+                else
+                {
+                    collisionXPosition = SecondCube.XPosition + (collisionHeight * 0.5);
+                }
+
+                double collisionYPosition;
+
+                if (FirstCube.YPosition < SecondCube.YPosition)
+                {
+                    collisionYPosition = FirstCube.YPosition + (collisionWidth * 0.5);
+                }
+                else
+                {
+                    collisionYPosition = SecondCube.YPosition + (collisionWidth * 0.5);
+                }
+
+                double collisionZPosition;
+
+                if (FirstCube.ZPosition < SecondCube.ZPosition)
+                {
+                    collisionZPosition = FirstCube.ZPosition + (collisionDepth * 0.5);
+                }
+                else
+                {
+                    collisionZPosition = SecondCube.ZPosition + (collisionDepth * 0.5);
+                }
+
+                return new CollisionIntersection(collisionHeight, collisionWidth, collisionDepth,
+                    collisionXPosition, collisionYPosition, collisionZPosition);
+            }
+
+            return new CollisionIntersection(0, 0, 0, 0, 0, 0);
         }
     }
 }
