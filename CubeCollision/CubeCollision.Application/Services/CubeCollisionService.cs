@@ -3,7 +3,7 @@ using CubeCollision.Application.Services.Interfaces;
 using CubeCollision.Application.Validators;
 using CubeCollision.Domain;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace CubeCollision.Application.Services
 {
@@ -28,7 +28,7 @@ namespace CubeCollision.Application.Services
             }
             else
             {
-                // throw exception?
+                throw new ValidationException();
             }
         }
 

@@ -4,6 +4,7 @@ using CubeCollision.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,9 +22,17 @@ namespace CubeCollision.API.Controllers
         }
 
         [HttpPost]
-        public void PostArena([FromBody] ArenaBindingModel arena)
+        public IActionResult PostArena([FromBody] ArenaBindingModel arena)
         {
-            _cubeCollisionService.SetArena(arena.FirstCube, arena.SecondCube);
+            try
+            {
+                _cubeCollisionService.SetArena(arena.FirstCube, arena.SecondCube);
+                return StatusCode(200);
+            }
+            catch (ValidationException)
+            {
+                return StatusCode(500);
+            }
         }
 
         [HttpGet]

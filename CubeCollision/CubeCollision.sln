@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeCollision.API", "CubeCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeCollision.Infrastructure", "CubeCollision.Infrastructure\CubeCollision.Infrastructure.csproj", "{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeCollision.API.Tests", "CubeCollision.API.Tests\CubeCollision.API.Tests.csproj", "{D63F579F-3F5E-4B7B-A2AC-6BC096F6FF4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EC00377-ED5E-4956-BE13-6D5BC457E5F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D63F579F-3F5E-4B7B-A2AC-6BC096F6FF4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D63F579F-3F5E-4B7B-A2AC-6BC096F6FF4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D63F579F-3F5E-4B7B-A2AC-6BC096F6FF4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D63F579F-3F5E-4B7B-A2AC-6BC096F6FF4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
