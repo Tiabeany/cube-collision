@@ -54,44 +54,34 @@ namespace CubeCollision.Domain
                 var collisionDepth = Math.Abs(GetAxisGapBetweenCubes(FirstCube.ZPosition, SecondCube.ZPosition,
                 FirstCube.Depth, SecondCube.Depth));
 
-                double collisionXPosition;
-                
-                if (FirstCube.XPosition < SecondCube.XPosition)
-                {
-                    collisionXPosition = FirstCube.XPosition + (collisionHeight * 0.5);
-                }
-                else
-                {
-                    collisionXPosition = SecondCube.XPosition + (collisionHeight * 0.5);
-                }
+                double collisionXPosition = GetCollisionAxisPosition(FirstCube.XPosition, SecondCube.XPosition, collisionHeight);
 
-                double collisionYPosition;
+                double collisionYPosition = GetCollisionAxisPosition(FirstCube.YPosition, SecondCube.YPosition, collisionWidth);
 
-                if (FirstCube.YPosition < SecondCube.YPosition)
-                {
-                    collisionYPosition = FirstCube.YPosition + (collisionWidth * 0.5);
-                }
-                else
-                {
-                    collisionYPosition = SecondCube.YPosition + (collisionWidth * 0.5);
-                }
-
-                double collisionZPosition;
-
-                if (FirstCube.ZPosition < SecondCube.ZPosition)
-                {
-                    collisionZPosition = FirstCube.ZPosition + (collisionDepth * 0.5);
-                }
-                else
-                {
-                    collisionZPosition = SecondCube.ZPosition + (collisionDepth * 0.5);
-                }
+                double collisionZPosition = GetCollisionAxisPosition(FirstCube.YPosition, SecondCube.YPosition, collisionWidth);
 
                 return new CollisionIntersection(collisionHeight, collisionWidth, collisionDepth,
                     collisionXPosition, collisionYPosition, collisionZPosition);
             }
 
             return new CollisionIntersection(0, 0, 0, 0, 0, 0);
+        }
+
+        private double GetCollisionAxisPosition(double firstCubeAxisPosition, double secondCubeAxisPosition, 
+            double collisionVertexSize)
+        {
+            double collisionXPosition;
+
+            if (firstCubeAxisPosition < secondCubeAxisPosition)
+            {
+                collisionXPosition = firstCubeAxisPosition + (collisionVertexSize * 0.5);
+            }
+            else
+            {
+                collisionXPosition = secondCubeAxisPosition + (collisionVertexSize * 0.5);
+            }
+
+            return collisionXPosition;
         }
     }
 }
