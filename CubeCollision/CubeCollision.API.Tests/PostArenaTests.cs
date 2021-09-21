@@ -42,7 +42,7 @@ namespace CubeCollision.API.Tests
             };
             using (var postArenaResponse = await _client.PostAsJsonAsync($"/api/CubeCollision", arenaBindingModel))
             {
-                Assert.True(postArenaResponse.IsSuccessStatusCode);
+                Assert.False(postArenaResponse.IsSuccessStatusCode);
             }
         }
     }
